@@ -38,6 +38,13 @@ public class ConverterTest {
         assertEquals(utf8BitsExpected, utf8BitsActual);
     }
 
+    @Test
+    public void testEncodeString() {
+        String utf8BitsActual = encodeToUTF8Bits(converter.encode("$¢€\uD800\uDF48"));
+        String utf8BitsExpected = encodeToUTF8Bits("$¢€\uD800\uDF48");
+        assertEquals(utf8BitsExpected, utf8BitsActual);
+    }
+
     public String encodeToUTF8Bits(byte[] array) {
         StringJoiner bits = new StringJoiner(" ");
         for (byte b : array) {
